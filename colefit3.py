@@ -200,17 +200,17 @@ class MyApp(QWidget):
         self.ax3.clear()
 
         self.ax.set_xlabel('Frequency [Hz]', fontdict=dict(weight='bold'))
-        self.ax.set_ylabel('Imag. permittivity', fontdict=dict(weight='bold'))
+        self.ax.set_ylabel('Imaginární část ε*', fontdict=dict(weight='bold'))
         self.canvas.figure.tight_layout(pad=2)
         self.ax.grid(True)
 
         self.ax2.set_xlabel('Frequency [Hz]', fontdict=dict(weight='bold'))
-        self.ax2.set_ylabel('Real. permittivity', fontdict=dict(weight='bold'))
+        self.ax2.set_ylabel('Reálná část ε*', fontdict=dict(weight='bold'))
         self.canvas2.figure.tight_layout(pad=2)
         self.ax2.grid(True)
 
-        self.ax3.set_xlabel('Real. permittivity', fontdict=dict(weight='bold'))
-        self.ax3.set_ylabel('Imag. permittivity', fontdict=dict(weight='bold'))
+        self.ax3.set_xlabel('Reálná část ε*', fontdict=dict(weight='bold'))
+        self.ax3.set_ylabel('Imaginární část ε*', fontdict=dict(weight='bold'))
         self.canvas3.figure.tight_layout(pad=2)
         self.ax3.grid(True)
 
@@ -243,7 +243,9 @@ class MyApp(QWidget):
         line, = self.ax3.plot(REALCALC, IMAGCALC, alpha=color_alpha, linestyle='dashed')
         scient_tau = "{:.2e}".format(TAU)
         maximum = np.argmax(IMAGCALC)
-        self.ax3.text(self.ax3.get_xlim()[0]+0.01*self.ax3.get_xlim()[0], IMAGCALC[maximum], "ε_stat: "+ str(np.round(PERMSTAT,3)) + " ε_nek: "+ str(np.round(PERMNEK,3)) + " λ: "+ str(scient_tau) + " α: "+ str(np.round(ALFA,3)) + " β: "+ str(np.round(BETA,3)), color = line.get_color(), fontweight = "black", fontsize = "medium")
+        maximumR = np.argmax(REALCALC)
+        #self.ax3.text(self.ax3.get_xlim()[0]+0.01*self.ax3.get_xlim()[0], IMAGCALC[maximum], "ε_stat: "+ str(np.round(PERMSTAT,3)) + " ε_nek: "+ str(np.round(PERMNEK,3)) + " λ: "+ str(scient_tau) + " α: "+ str(np.round(ALFA,3)) + " β: "+ str(np.round(BETA,3)), color = line.get_color(), fontweight = "black", fontsize = "medium")
+        #self.ax3.text(self.ax3.get_xlim()[0]+0.01*self.ax3.get_xlim()[0], IMAGCALC[maximum]+0.1*IMAGCALC[maximum], "ε_stat: "+ str(np.round(PERMSTAT,3)) + " ε_nek: "+ str(np.round(PERMNEK,3)) + " λ: "+ str(scient_tau) + " α: "+ str(np.round(ALFA,3)) + " β: "+ str(np.round(BETA,3)), color = line.get_color(), fontweight = "black", fontsize = "small")
         self.canvas3.draw()
 
         try:
