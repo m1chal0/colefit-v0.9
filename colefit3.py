@@ -226,7 +226,6 @@ class MyApp(QWidget):
 
         self.canvas3.draw()
         self.button3.setEnabled(True)
-        
 
     def update_chart_fit(self, FREKVENCE, IMAGINARNIE_FIT, REALNAE_FIT, REALCALC, IMAGCALC, PERMSTAT, PERMNEK, TAU, ALFA, BETA):
         color = "b"
